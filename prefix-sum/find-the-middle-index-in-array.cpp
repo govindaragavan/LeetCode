@@ -16,9 +16,10 @@ public:
         if(i==0){
         if(prefix[n-1]==0)
         return i;}
-        else if(i==n-1 && prefix[n-2]==0)
-        return i;
-        else if(prefix[i]==prefix[n-1]-prefix[i-1])
+        else if(i==n-1){
+        if(prefix[n-2]==0)
+        return i;}
+        else if(prefix[i]==prefix[i+1]-prefix[i-1])
         return i;
       }
       return -1;
