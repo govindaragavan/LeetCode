@@ -22,10 +22,10 @@ public:
         vector<int> nge(n);
 
         for(int i=n-1;i>=0;i--){
-            while(!st.empty() && list[i]<st.top())
+            while(!st.empty() && st.top()<=list[i])
             st.pop();
             
-            nge[i]=st.empty() ? 0 : st.top();
+            nge[i]= st.empty() ? 0 : st.top();
 
             st.push(list[i]);
         }
