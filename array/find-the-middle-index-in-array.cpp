@@ -3,18 +3,22 @@ public:
     int findMiddleIndex(vector<int>& nums) {
         int sum=0;
         int n = nums.size();
+        vector<int> prefix(n);
         for(int i=0;i<n;i++){
             sum+=nums[i];
-            nums[i]=sum;
+            prefix[i]=sum;
         }
-        
-        nums.insert(nums.begin(),0);
-      for(int i=1;i<n;i++){
-        if(nums[i-1]==nums[n-1]-nums[i])
+   for(int x : prefix)
+   cout<<x<< " ";
+      for(int i=0;i<n;i++){
+        if(i==0){
+        if(prefix[n-1]==0)
+        return i;}
+        else if(i==n-1 && prefix[n-2]==0)
         return i;
-       if(i==n-1 && nums[i-1]==0)
-       return i;
+        else if(prefix[i]==prefix[n-1]-prefix[i-1])
+        return i;
       }
-      return 0;
+      return -1;
     }
 };
