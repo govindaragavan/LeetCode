@@ -12,16 +12,13 @@ public:
         }
    for(int x : prefix)
    cout<<x<< " ";
-      for(int i=0;i<n;i++){
-        if(i==0){
-        if(prefix[n-1]==0)
-        return i;}
-        else if(i==n-1){
-        if(prefix[n-2]==0)
-        return i;}
-        else if(prefix[i]==prefix[i+1]-prefix[i-1])
-        return i;
-      }
+      int total = prefix[n - 1];
+for (int i = 0; i < n; i++) {
+    int left = (i == 0 ? 0 : prefix[i - 1]);
+    int right = total - prefix[i];
+    if (left == right) return i;
+}
+
       return -1;
     }
 };
