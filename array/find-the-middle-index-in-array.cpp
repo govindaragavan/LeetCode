@@ -3,6 +3,8 @@ public:
     int findMiddleIndex(vector<int>& nums) {
         int sum=0;
         int n = nums.size();
+        if(n==1)
+        return 0;
         vector<int> prefix(n);
         for(int i=0;i<n;i++){
             sum+=nums[i];
