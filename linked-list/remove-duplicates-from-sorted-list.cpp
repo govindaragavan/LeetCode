@@ -11,6 +11,8 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
+        if(!head || !head->next)
+        return head;
         ListNode * temp=head;
       map<int,int> mp;     
       while(temp){
