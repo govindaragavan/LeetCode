@@ -3,13 +3,11 @@ public:
     int lengthOfLongestSubstring(string s) {
         int n = s.length();
         unordered_map<char,int> mp;
-        int l=0,ans=1;
+        int l=0,ans=0;
         for(int i=0;i<n;i++){
         mp[s[i]]++;
         while(mp[s[i]]>1){
-          if(s[l]==s[i])
-          mp[s[i]]--;
-
+          mp[s[l]]--;
           l++;
         }
 
