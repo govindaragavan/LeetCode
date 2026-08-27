@@ -26,8 +26,6 @@ public:
                 if (node->right)
                     q.push(node->right);
             }
-
-            // Reverse values at odd level
             if (level % 2 == 1) {
                 int i = 0;
                 int j = nodes.size() - 1;
