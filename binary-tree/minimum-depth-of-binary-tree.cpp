@@ -12,10 +12,10 @@
 class Solution {
 public:
     int minDepth(TreeNode* root) {
-        if(!root) return INT_MAX;
+        if(!root) return 0;
        if(isLeaf(root)) return 1;
-        int l=minDepth(root->left);
-        int r=minDepth(root->right);
+        int l=root->left==NULL?  INT_MAX: minDepth(root->left);
+        int r=root->right==NULL?  INT_MAX: minDepth(root->right);
         return 1+ min(l,r);
     }
     private: 
