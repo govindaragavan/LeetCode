@@ -20,7 +20,6 @@ public:
     }
     private:
     void helper(TreeNode* root,int num,vector<int>& arr){
-        if(!root) return;
 
         num=num*10 + root->val;
 
