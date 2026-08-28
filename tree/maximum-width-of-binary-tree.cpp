@@ -19,16 +19,19 @@ public:
         while(!q.empty()){
             int n=q.size();
             int left=q.front().second;
+            int first,last;
             for(int i=0;i<n;i++){
                 auto p=q.front();
                 TreeNode* node=p.first;
-                int index=p.second;
+                int index=p.second-left;
                 q.pop();
+       if(i==0)    first=index;
+       if(i==n-1)     last=index;
                 if(i==n-1) ans=max(ans,index-left+1);
                 if(node->left) q.push({node->left,2*index+1});
                 if(node->right) q.push({node->right,2*index+2});
             }
-            
+            ans=max(last-first+1,ans);
         }
                     return ans;
     }
