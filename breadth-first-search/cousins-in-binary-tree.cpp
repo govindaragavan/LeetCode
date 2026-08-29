@@ -18,7 +18,7 @@ public:
         q.push(root);
         int xl=0,yl=0,l=0;
         TreeNode* xp;
-        TreeNode* yp=nu;
+        TreeNode* yp;
         while(!q.empty()){
             int n  =q.size();
             for(int i=0;i<n;i++){
