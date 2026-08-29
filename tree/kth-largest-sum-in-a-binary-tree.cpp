@@ -12,8 +12,8 @@
 class Solution {
 public:
     long long kthLargestLevelSum(TreeNode* root, int k) {
+                if(!root) return 0;
         vector<long long> tree;
-        if(!root) return 0;
         queue<TreeNode*> q;
         q.push(root);
         while(!q.empty()){
@@ -30,6 +30,9 @@ public:
             tree.push_back(sum);
         }
         sort(tree.begin(),tree.end());
+        long long ans;
+       
+        if(tree.size()<k) return -1;
         return tree[tree.size()-k];
     }
 };
