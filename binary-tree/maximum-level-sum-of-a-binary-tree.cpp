@@ -12,9 +12,9 @@
 class Solution {
 public:
     int maxLevelSum(TreeNode* root) {
-        long long sum=0;
-        int ans=0,l=0;
-        if(!root) return 0;
+                if(!root) return 0;
+        vector<pair<int,int>>sums;
+        int  l=0;
         queue<TreeNode*> q;
         q.push(root);
         while(!q.empty()){
@@ -27,12 +27,10 @@ public:
                 if(node->left) q.push(node->left);
                 if(node->right) q.push(node->right);
             }l++;
-            if(temp>sum)
-            {
-                sum=temp;
-                ans=l;
-            }
+            sums.push_back({temp,l});
         }
+        sort(sums.begin(),sums.end());
+        int  ans=sums[sums.size()-1].second;
         return ans;
     }
 };
