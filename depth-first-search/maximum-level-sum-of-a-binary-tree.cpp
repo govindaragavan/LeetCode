@@ -13,8 +13,8 @@ class Solution {
 public:
     int maxLevelSum(TreeNode* root) {
                 if(!root) return 0;
-        vector<pair<int,int>>sums;
-        int  l=0;
+        long long sum=LLONG_MIN;
+        int ans,  l=0;
         queue<TreeNode*> q;
         q.push(root);
         while(!q.empty()){
@@ -23,14 +23,15 @@ public:
             for(int i=0;i<n;i++){
                 TreeNode* node=q.front();
                 q.pop();
-                temp+=node->val;
+                temp+=(node->val);
                 if(node->left) q.push(node->left);
                 if(node->right) q.push(node->right);
             }l++;
-            sums.push_back({temp,l});
+            if(temp>sum){
+                sum=temp;
+                ans=l;
+            }
         }
-        sort(sums.begin(),sums.end());
-        int  ans=sums[sums.size()-1].second;
         return ans;
     }
 };
