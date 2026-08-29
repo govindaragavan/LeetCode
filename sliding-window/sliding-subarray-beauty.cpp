@@ -2,33 +2,31 @@ class Solution {
 public:
     vector<int> getSubarrayBeauty(vector<int>& nums, int k, int x) {
         vector<int> ans;
-        multiset<int> s;
-
+        int freq[101] = {};
         for (int i = 0; i < k; i++) {
-            s.insert(nums[i]);
+            freq[nums[i] + 50]++;
         }
 
-        auto it = s.begin();
-        advance(it, x - 1);
+        for (int i = k; i <= nums.size(); i++) {
 
-        if (*it < 0)
-            ans.push_back(*it);
-        else
-            ans.push_back(0);
+            int count = 0;
+            int beauty = 0;
 
-        for (int i = k; i < nums.size(); i++) {
+            for (int j = -50; j < 0; j++) {
+                count += freq[j + 50];
 
-            s.erase(s.find(nums[i - k]));
+                if (count >= x) {
+                    beauty = j;
+                    break;
+                }
+            }
 
-            s.insert(nums[i]);
+            ans.push_back(beauty);
 
-            auto it = s.begin();
-            advance(it, x - 1);
-
-            if (*it < 0)
-                ans.push_back(*it);
-            else
-                ans.push_back(0);
+            if (i < nums.size()) {
+                freq[nums[i - k] + 50]--;
+                freq[nums[i] + 50]++;
+            }
         }
 
         return ans;
