@@ -12,11 +12,15 @@ public:
       score++;
         l++;
        }
-       else if(power<tokens[l])
+       else if(power<tokens[l] && score>=1)
        {
         power+=tokens[r];
         score--;
         r--;
+       }
+       else if(power<tokens[l])
+       {
+        return ans;
        }
                ans=max(ans,score);
         }
