@@ -6,13 +6,12 @@ public:
         int n = numbers.size();
         int sum=0;
         for(int i=0;i<n;i++){
-                mp[numbers[i]]=i+1;
-            if(mp.find(target-numbers[i])!=mp.end() && target!=2*numbers[i]){
+            if(mp.find(target-numbers[i])!=mp.end()){
                 ans.push_back(mp[target-numbers[i]]);
-                ans.push_back(mp[numbers[i]]);
+                ans.push_back(i+1);
                 return ans;
         }
-
+                        mp[numbers[i]]=i+1;
     }
     for(auto it=mp.begin();it!=mp.end();++it)
     cout<<it->first<<" ";
