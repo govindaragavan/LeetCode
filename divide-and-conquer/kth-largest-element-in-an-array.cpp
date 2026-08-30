@@ -5,11 +5,10 @@ public:
         for(int x : nums)
         map[x]++;
 
-        for(auto it= map.end();it!=map.begin();it--){
+        for(auto it= map.rbegin();it!=map.rend();it++){
            cout<<it->first<<"->"<<it->second<<" ";
            k-=it->second;
-           if(k<=0) return it->first;
-        }
+           if(k<=0) return it->first;}
         return 0;
     }
 };
