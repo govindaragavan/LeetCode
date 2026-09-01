@@ -12,20 +12,13 @@
 class Solution {
 public:
     int countNodes(TreeNode* root) {
-     if(!root) return 0;
-     vector<int> tree;
-     queue<TreeNode*> q;
-    q.push(root);
-    while(!q.empty()){
-        int n = q.size();
-        for(int i=0;i<n;i++){
-            TreeNode* node = q.front();
-            q.pop();
-            tree.push_back(node->val);
-            if(node->left) q.push(node->left);
-            if(node->right) q.push(node->right);
-        }
-    }
-    return tree.size();
+        if(!root) return 0;
+        TreeNode*l=root;
+        TreeNode*r=root;
+        int lh=0,rh=0;
+        while(l){lh++; l=l->left;}
+        while(r){rh++; r=r->right;}
+        if(lh==rh) return (1<<lh) -1;
+        return 1 + countNodes(root->left)+countNodes(root->right);
     }
 };
