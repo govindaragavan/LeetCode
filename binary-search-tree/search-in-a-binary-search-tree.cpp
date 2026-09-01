@@ -15,7 +15,7 @@ public:
         while(root!=NULL){
             if(root->val ==val) return root;
             if(root->val>val) root=root->left;
-            else root=root->left;
+            else root=root->right;
         }
         return nullptr;
     }
