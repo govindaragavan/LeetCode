@@ -10,12 +10,14 @@
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        vector<vector<TreeNode*>> ans;
+        vector<TreeNode*> set1;
+        vector<TreeNode*> set2;
 
-        solve(p,root,ans,{});
-        solve(q,root,ans,{});
-                vector<TreeNode*> set1=ans[0];
-        vector<TreeNode*> set2=ans[1];
+        solve(p,root,{},set1);
+        solve(q,root,{},set2);
+  for(TreeNode* x : set1) cout<<x->val<<" ";
+  cout<<endl;
+    for(TreeNode* x : set2) cout<<x->val<<" ";
         int n=set1.size();
         int m=set2.size();
         int i=0;
@@ -26,11 +28,11 @@ public:
         }
         return set1[i-1];
     }
-    void solve(TreeNode* p,TreeNode* root,vector<vector<TreeNode*>>& ans,vector<TreeNode*> curr){
+    void solve(TreeNode* p,TreeNode* root,vector<TreeNode*> curr,vector<TreeNode*> &set){
         if(!root) return;
         curr.push_back(root);
-        if(root==p) {ans.push_back(curr); return ;}
-        solve(p,root->left,ans,curr);
-        solve(p,root->right,ans,curr);
+        if(root==p){set=curr; return;}
+        solve(p,root->left,curr,set);
+        solve(p,root->right,curr,set);
     }
 };
