@@ -17,10 +17,16 @@ public:
         return ans;
     }
     void solve(TreeNode* root,int &ans){
+        if(!root) return;
         if(!root->left && !root->right) return;
         TreeNode* left=root->left;
         TreeNode* right=root->right;
-        if(!(left->val<root->val) || !(right->val>root->val)) {ans=0; return;}
+        if(left)
+        if(!(left->val<root->val) )
+        {ans=0; return;}
+        if(right)
+        if(!(right->val>root->val))
+         {ans=0; return;}
         solve(root->left,ans);
         solve(root->right,ans);
     }
