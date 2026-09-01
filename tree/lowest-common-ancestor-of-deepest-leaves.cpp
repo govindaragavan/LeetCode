@@ -13,28 +13,47 @@ class Solution {
 public:
     TreeNode* lcaDeepestLeaves(TreeNode* root) {
         vector<vector<TreeNode*>> ans;
-        solve(root,{},ans);
-       
-       for(auto p : ans){
-        for(TreeNode* x : p) cout<<x->val<<" ";
-        cout<<endl;
-               }
+int height=depth(root);
+        solve(root,{},ans,0,height);
+        TreeNode* lca = ans[0][0];
 
-        return root;
+        for (int i = 0; i < ans[0].size(); i++) {
+
+            bool same = true;
+
+            for (int j = 1; j < ans.size(); j++) {
+                if (ans[j][i] != ans[0][i]) {
+                    same = false;
+                    break;
+                }
+            }
+
+            if (same)
+                lca = ans[0][i];
+            else
+                break;
+        }
+
+        return lca;
     }
-    void solve(TreeNode* root,vector<TreeNode*> path,vector<vector<TreeNode*>>& ans){
-        if(!root) return false;
+    void solve(TreeNode* root,vector<TreeNode*> path,vector<vector<TreeNode*>>& ans,int l,int h){
+        if(!root) return ;
 
         path.push_back(root);
 
-        if(!root->left && !root->left){
+        if(!root->left && !root->right && l==h-1){
             ans.push_back(path);
-            return true;
+            return ;
         }
-        if(solve(root->left,path,ans)) return true;
-        if(solve(root->right,path,ans)) return true;
+        solve(root->left,path,ans,l+1,h);
+        solve(root->right,path,ans,l+1,h);
+    }
+    int depth(TreeNode* root){
+        if(!root) return 0;;
 
-        path.pop_back();
-        return false;
+        int lh= depth(root->left);
+        int rh=depth(root->right);
+
+        return 1 + max(lh,rh);
     }
 };
