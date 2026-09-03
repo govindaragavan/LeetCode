@@ -3,8 +3,8 @@ class Solution {
 public:
     int waysToSplitArray(vector<int>& nums) {
         int n=nums.size();
-        vector<int> prefix(n);
-int sum=0;
+        vector<long long> prefix(n);
+long long sum=0;
 for(int i=0;i<n;i++){
     sum+=nums[i];
     prefix[i]=sum;
