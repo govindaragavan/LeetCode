@@ -14,8 +14,8 @@ for(int x : prefix) cout<<x<<" ";
 cout<<endl;
 int ans=0; 
 for(int i=0;i<n;i++){
-    if(prefix[i]>=prefix[n-1]-prefix[i]){ ans++; cout<<i<<" "<<prefix[i]<<" "<<prefix[n-1]-prefix[i]<<endl;}
+    if(prefix[i]>=prefix[n-1]-prefix[i] && i!=n-1){ ans++; cout<<i<<" "<<prefix[i]<<" "<<prefix[n-1]-prefix[i]<<endl;}
 } 
-return ans-1;
+return ans;
     }
 };
