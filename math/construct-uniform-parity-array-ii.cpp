@@ -16,11 +16,8 @@ class Solution {
 public:
     bool uniformArray(vector<int>& nums1) {
         int even=0,odd=0;
-        sort(nums1.begin(),nums1.end());
-        int n=nums1.size();
-       vector<int> pse1;
-       pse1=pse(nums1);
-       for(int x : pse1) cout<<x<<" ";
+                int n=nums1.size();
+        if(n==1) return true;
         for(int i=0;i<n;i++){
             if(nums1[i]%2==0) even++;
             else odd++;
