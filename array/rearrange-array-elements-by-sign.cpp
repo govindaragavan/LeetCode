@@ -7,8 +7,13 @@ public:
             int k = 1;
             while (k < n) {
                 if (nums[k] > 0) {
-                    swap(nums[0], nums[k]);
-                    break;
+                     int i = k;
+                        while (i > 0) {
+                            swap(nums[i], nums[i - 1]);
+                            i--;
+                        }
+
+                        break;                    
                 }
                 k++;
             }
