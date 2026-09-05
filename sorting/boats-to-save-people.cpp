@@ -1,20 +1,38 @@
-class Solution {
+class Solution
+{
 public:
-    int numRescueBoats(vector<int>& people, int limit) {
-        sort(people.begin(),people.end());
-        int ans=0,n=people.size();
-       int i=0;
-       while(i<n){
-        int sum=0;
-        while(sum<=limit && i<n){
-            if(sum==limit) break;
-            if(sum+people[i]<=limit)
-            sum+=people[i];
-            else break;
-            i++;
+    int numRescueBoats(vector<int>& people, int limit)
+    {
+        int n = people.size();
+
+        if (n == 1)
+        {
+            return 1;
         }
-        ans++;
-              }       cout<<i;
+
+        int ans = 0;
+
+        int heavy = n - 1;
+        int light = 0;
+
+        sort(people.begin(), people.end());
+
+        while (light <= heavy)
+        {
+
+            ans++;
+
+            if (people[light] + people[heavy] <= limit)
+            {
+                light++;
+                heavy--;
+            }
+            else
+            {
+                heavy--;
+            }
+        }
+
         return ans;
     }
 };
