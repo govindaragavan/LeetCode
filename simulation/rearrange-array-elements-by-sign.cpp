@@ -13,12 +13,17 @@ public:
            if(nums[i-1]*nums[i]>0){
             int j=i+1;
             while(j<n){
-                if(nums[i]*nums[j]<0)
-                {swap(nums[i],nums[j]); break;}
-                j++;
-            }
+                if(nums[i]*nums[j]<0){
+                    int k=j;
+                    while(k>i){
+                    swap(nums[k],nums[k-1]); k--;
+                    }
+                    break;
+                }
+           j++;
            }
         }
-        return nums;
+    }
+            return nums;
     }
 };
