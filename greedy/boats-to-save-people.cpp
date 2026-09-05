@@ -8,6 +8,7 @@ public:
             if(limit==people[i]) ans++;
             else break;
         }
+        if(i==-1) i=people.size()-1;
         int l=0,r=i;
         while(l<r){
         if(people[l]+people[r]<=limit){
