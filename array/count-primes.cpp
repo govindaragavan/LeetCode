@@ -2,8 +2,8 @@ class Solution {
 public:
     int countPrimes(int n) {
               if (n <= 2) return 0;
-        vector<int> a(n, 1);
-        a[0] = a[1] = 0;
+        vector<bool> a(n, 1);
+        a[0] = a[1] = false;
 
       for(int i=2;i*i<n;i++){
         if(a[i]==1){
