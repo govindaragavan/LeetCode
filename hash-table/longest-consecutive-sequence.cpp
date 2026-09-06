@@ -13,7 +13,7 @@ for(auto it=set.begin();it!=set.end();it++){
     cout<<*it<<endl;
     ans=max(ans,l);
     if(set.find(*it + 1)!=set.end()) l++;
-    else l=0;
+    else l=1;
 }
         return ans;
     }
