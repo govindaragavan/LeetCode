@@ -2,7 +2,7 @@ class Solution {
 public:
     int countPrimes(int n) {
         map<int,int> map;
-        if(n==1 || n==0) return 1;
+        if(n==1 || n==0) return 0;
         for(int i=2;i*i<=n;i++){
             if(n%i==0)
             map[i]++;
