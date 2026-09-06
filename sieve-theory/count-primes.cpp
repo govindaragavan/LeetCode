@@ -2,14 +2,16 @@ class Solution {
 public:
     int countPrimes(int n) {
         map<int,int> map;
-        for(int i=0;i*i<=n;i++){
-            if(n%x==0)
-            map[x]++;
+        if(n==1 || n==0) return 1;
+        for(int i=2;i*i<=n;i++){
+            if(n%i==0)
+            map[i]++;
 
-            n/=x;
+            n/=i;
         }
         if(n>1) map[n]++;
-        for(auto it=map.begin();it!=map.end();it++) cout<<it->first<<" "<<it->second;
-        return 1;
+        int ans=1;
+        for(auto it=map.begin();it!=map.end();it++) ans*=(it->second+1);
+        return ans;
     }
 };
