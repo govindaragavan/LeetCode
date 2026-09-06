@@ -4,16 +4,16 @@ public:
               if (n <= 2) return 0;
         vector<bool> a(n, true);
         a[0] = a[1] = false;
-
-      for(int i=2;i*i<n;i++){
+  for(int i=4;i<n;i+=2) a[i]=false;
+      for(int i=3;i*i<n;i+=2){
         if(a[i]){
-            for(int j=i*i;j<n;j+=i){
+            for(int j=i*i;j<n;j+=2*i){
                 a[j]=false;
             }
         }
       }
-      int ans=0;
-      for(int i=2;i<n;i++) if(a[i]) ans++;
+      int ans=1;
+      for(int i=3;i<n;i+=2) if(a[i]) ans++;
         return ans;
     }
 };
