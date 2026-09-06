@@ -4,14 +4,12 @@ public:
         int n=nums.size();
         int majority=floor((double)n/3);
         unordered_map<int,int> map;
+        set<int> set;
         for(int x : nums){
          map[x]++;
-         
+         if(map[x]>majority) set.insert(x);
          }
- vector<int> ans;
-        for(auto it=map.begin();it!=map.end();it++){
-            if(it->second>majority) ans.push_back(it->first);
-        }
+ vector<int> ans(set.begin(),set.end());
         return ans;
     }
 };
