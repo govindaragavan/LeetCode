@@ -25,11 +25,12 @@ public:
 
    bool isPrime(int n){
     int c=0;
-    for(int i=1;i<=n;i++)
-     if(n%i==0) c++;
+    if(n<2) return false;
+    if(n==2) return true;
+    if(n%2==0) return false;
+    for(int i=3;i*i<=n;i+=2)
+     if(n%i==0) return false;
     
-    if(c==2) return true;
-
-    return false;
+    return true;
    }
 };
