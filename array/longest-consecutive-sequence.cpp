@@ -8,13 +8,13 @@ for(int i=0;i<n;i++){
     set.insert(nums[i]);
 }
 if(set.size()==1) return 1;
-int ans=1,l=0;
+int ans=0,l=1;
 for(auto it=set.begin();it!=set.end();it++){
     cout<<*it<<endl;
     if(set.find(*it + 1)!=set.end()) l++;
     else l=0;
     ans=max(ans,l);
 }
-        return ans+1;
+        return ans;
     }
 };
