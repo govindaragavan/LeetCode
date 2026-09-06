@@ -9,19 +9,19 @@ public:
         return 1;
     }
     private:
-   bool isPalindrome(int n){
-    string s=to_string(n);
-    int len=s.length();
-    int l=0,r=len-1;
+bool isPalindrome(int n) {
+    if (n < 0 || (n % 10 == 0 && n != 0))
+        return false;
 
-    while(l<r){
-        if(s[l]!=s[r]) return false;
-        
-        l++;
-        r--;}
-    
-    return true;
-   }
+    int rev = 0;
+
+    while (n > rev) {
+        rev = rev * 10 + n % 10;
+        n /= 10;
+    }
+
+    return n == rev || n == rev / 10;
+}
 
    bool isPrime(int n){
     int c=0;
