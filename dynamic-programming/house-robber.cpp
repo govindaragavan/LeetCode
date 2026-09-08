@@ -8,6 +8,8 @@ class Solution {
     }
 public:
     int rob(vector<int>& nums) {
+        int n=nums.size();
+        if(n<=2) return *max_element(nums.begin(),nums.end());
 int sum=0;
 solve(nums,0,sum,0);
 return sum;
