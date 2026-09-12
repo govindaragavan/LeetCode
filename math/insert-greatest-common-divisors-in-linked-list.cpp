@@ -13,10 +13,14 @@ public:
     ListNode* insertGreatestCommonDivisors(ListNode* head) {
         ListNode* temp= head;
         ListNode* Next=head->next;
-        while(temp){
-            int gcd=__gcd(head->val,Next->val);
+        ListNode* prev=head;
+        while(Next){
+            int gcd=__gcd(temp->val,Next->val);
             ListNode* dummy= new ListNode(gcd);
-            temp=temp->next;
+            temp->next=dummy;
+            dummy->next=Next;
+            temp=Next;
+            Next=Next->next;
         }
         return head;
     }
