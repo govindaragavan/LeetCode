@@ -1,0 +1,33 @@
+class Solution {
+public:
+    bool completePrime(int num) {
+string n=to_string(num);
+int len=n.length();
+for(int i=0;i<=len;i++){
+    string s=n.substr(0,i);
+    cout<<s<<" ";
+   if(s!=""){
+    int tmp=stoi(s);
+    if(!isPrime(tmp)) return false;}
+}
+      for(int i=1;i<len;i++){
+    string s=n.substr(i);
+        cout<<s<<" ";
+    if(s!=""){
+    int tmp=stoi(s);
+    if(!isPrime(tmp)) return false;}
+}
+return 1;  
+    }
+    private:
+        bool isPrime(int n){
+        if(n<=1) return false;
+        if(n==2) return 1;
+        if(n%2==0) return 0;
+
+        for(int i=3;i<=sqrt(n);i+=2){
+            if(n%i==0) return false;
+        }
+        return 1;
+    }
+};
