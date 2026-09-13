@@ -1,8 +1,12 @@
 class Solution {
 public:
     bool isUgly(int n) {
+        if(n<0) return false;
        set<int> set=solve(n);
+       if(set.size()>3) return false;
+
        for(auto it=set.begin();it!=set.end();it++){
+        cout<<*it<<" ";
         if(*it!=2 && *it!=3 && *it!=5) return false;
        } 
        return true;
