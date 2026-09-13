@@ -3,19 +3,17 @@ public:
     bool completePrime(int num) {
 string n=to_string(num);
 int len=n.length();
-for(int i=0;i<=len;i++){
+for(int i=1;i<=len;i++){
     string s=n.substr(0,i);
     cout<<s<<" ";
-   if(s!=""){
     int tmp=stoi(s);
-    if(!isPrime(tmp)) return false;}
+    if(!isPrime(tmp)) return false;
 }
       for(int i=1;i<len;i++){
     string s=n.substr(i);
         cout<<s<<" ";
-    if(s!=""){
     int tmp=stoi(s);
-    if(!isPrime(tmp)) return false;}
+    if(!isPrime(tmp)) return false;
 }
 return 1;  
     }
