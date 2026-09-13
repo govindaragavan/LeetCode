@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool isUgly(int n) {
-        if(n<0) return false;
+        if(n<1) return false;
        set<int> set=solve(n);
        if(set.size()>3) return false;
 
