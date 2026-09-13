@@ -14,7 +14,7 @@ public:
    private:
    set<int> solve(int n){
     set<int> set;
-    for(int i=2;i<=sqrt(n);i+=2){
+    for(int i=2;i<=sqrt(n);i++){
         while(n%i==0){
             set.insert(i);
             n/=i;
