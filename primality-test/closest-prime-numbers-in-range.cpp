@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> closestPrimes(int left, int right) {
         vector<int> v;
-        for(int i=left;i<=right;i++){
+        for(int i=left;i*i<=right;i+=2){
             if(isPrime(i)) v.push_back(i);
         }
         for(int x : v) cout<<x<<" ";
