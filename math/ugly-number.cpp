@@ -1,26 +1,21 @@
 class Solution {
 public:
     bool isUgly(int n) {
-        if(n<1) return false;
-       unordered_set<int> set=solve(n);
-       if(set.size()>3) return false;
-
-       for(auto it=set.begin();it!=set.end();it++){
-        cout<<*it<<" ";
-        if(*it!=2 && *it!=3 && *it!=5) return false;
-       } 
-       return true;
-    }
-   private:
-   unordered_set<int> solve(int n){
-   unordered_set<int> set;
-    for(int i=2;i<=sqrt(n);i++){
-        while(n%i==0){
-            set.insert(i);
-            n/=i;
+        while(n!=0 && n%2==0){
+            n=n/2;
+            if(n==1)
+                return true;
         }
+        while(n!=0 && n%3==0){
+            n=n/3;
+            if(n==1)
+                return true;
+        }
+        while(n!=0 && n%5==0){
+            n=n/5;
+            if(n==1)
+                return true;
+        }
+        return n==1;
     }
-    if(n>1) set.insert(n);
-    return set;
-   }
 };
