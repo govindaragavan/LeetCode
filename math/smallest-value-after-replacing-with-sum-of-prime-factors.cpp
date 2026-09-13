@@ -1,21 +1,22 @@
 class Solution {
 public:
     int smallestValue(int n) {
-        vector<int> v=SumPrime(n);
-int ans = *max_element(v.begin(),v.end());
-return ans;
+        while(n!=SumPrime(n)){
+            n=SumPrime(n);
+        }
+        return n;
     }
     private: 
-    vector<int> SumPrime(int n){
-        vector<int> v;
+    int SumPrime(int n){
+        long long sum=0;
         for(int i=2;i*i<=n;i++){
             while(n%i==0){
-       v.push_back(i);
+       sum+=i;
        n/=i;
             }
         }
-        if(n>1) v.push_back(n);
+        if(n>1) sum+=n;
 
-        return v;
+        return sum;
     }
 };
