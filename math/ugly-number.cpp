@@ -1,9 +1,9 @@
 class Solution {
 public:
     bool isUgly(int n) {
-       set<int> ans=solve(n);
-       for(int i=0;i<set.size();i++){
-        if(set[i]!=2 || set[i]!=3 || set[i]!=5) return false;
+       set<int> set=solve(n);
+       for(auto it=set.begin();it!=set.end();it++){
+        if(*it!=2 && *it!=3 && *it!=5) return false;
        } 
        return true;
     }
