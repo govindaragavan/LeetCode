@@ -13,9 +13,9 @@ public:
     for(int i=2;i<=n;i++){
         v.push_back("1/"+to_string(i));
     }
-    for(int i=1;i<n;i++){
+    for(int i=2;i<n;i++){
         for(int j=i+1;j<=n;j++){
-            if(j%i!=0){
+            if(__gcd(i,j)==1){
             string s=to_string(i)+"/"+to_string(j);
             v.push_back(s);}
         }
