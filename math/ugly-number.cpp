@@ -2,7 +2,7 @@ class Solution {
 public:
     bool isUgly(int n) {
         if(n<1) return false;
-       unoreded_set<int> set=solve(n);
+       unordered_set<int> set=solve(n);
        if(set.size()>3) return false;
 
        for(auto it=set.begin();it!=set.end();it++){
@@ -12,8 +12,8 @@ public:
        return true;
     }
    private:
-   unoreded_set<int> solve(int n){
-   unoreded_set<int> set;
+   unordered_set<int> solve(int n){
+   unordered_set<int> set;
     for(int i=2;i<=sqrt(n);i++){
         while(n%i==0){
             set.insert(i);
