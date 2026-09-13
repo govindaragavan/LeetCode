@@ -3,9 +3,11 @@ public:
     int largestPrime(int n) {
         long long sum=0;
         if(n==2) return n;
+        int ans=0;
         for(int i=2;i<=n;i++){
+            if(isPrime(sum)) ans=sum;
             if(isPrime(i)){
-                if(i+sum>n) return sum;
+                if(i+sum>n) return ans;
                 else sum+=i;
             }
         }
