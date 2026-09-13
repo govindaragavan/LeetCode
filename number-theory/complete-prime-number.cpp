@@ -4,15 +4,11 @@ public:
 string n=to_string(num);
 int len=n.length();
 for(int i=1;i<=len;i++){
-    string s=n.substr(0,i);
-    cout<<s<<" ";
-    int tmp=stoi(s);
+    int tmp=stoi(n.substr(0,i));
     if(!isPrime(tmp)) return false;
 }
       for(int i=1;i<len;i++){
-    string s=n.substr(i);
-        cout<<s<<" ";
-    int tmp=stoi(s);
+    int tmp=stoi(n.substr(i));
     if(!isPrime(tmp)) return false;
 }
 return 1;  
