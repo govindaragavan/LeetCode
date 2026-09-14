@@ -2,14 +2,13 @@ class Solution {
 public:
     long long splitArray(vector<int>& nums) {
         int n=nums.size();
-        long long sum=0;
-        for(int x : nums) sum+=x;
-    long long Primesum=0;
-        for(int x=0;x<n;x++) 
-        if(isPrime(x)) Primesum+=nums[x];
+        long long OtherSum=0;
+    long long PrimeSum=0;
+        for(int x=0;x<n;x++){ 
+        if(isPrime(x)) PrimeSum+=nums[x];
+        else OtherSum+=nums[x];}
 
-        cout<<sum<<" "<<Primesum;
-    return abs((2*Primesum)-sum);
+    return abs(PrimeSum-OtherSum);
         
     }
 
