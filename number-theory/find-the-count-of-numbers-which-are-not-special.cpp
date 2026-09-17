@@ -9,13 +9,13 @@ public:
     }
     bool solve(int n){
         int size=0;
-        for(int i=1;i<=sqrt(n);i++){
+        for(int i=2;i<=sqrt(n);i++){
             if(n%i==0){
                 size++;
                 if(i!=n/i) size++;
             }
         }
-        if(size-1==2) return 1;
+        if(size==1) return 1;
         return 0;
     }
 };
