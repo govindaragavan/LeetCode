@@ -2,17 +2,18 @@ class Solution {
 public:
     int minOperations(vector<int>& nums) {
         int n=nums.size();
-        vector<int> a(n);
         int ans=0;
        for(int i=n-1;i>=1;i--){
         if(nums[i-1]>nums[i]){
-         if(solve(nums[i-1])!=0){
+        int t=solve(nums[i-1]);
+         if(t!=0){
             while(nums[i-1]>nums[i] ){
                 int tmp =solve(nums[i-1]);
              if(tmp!=0){
              nums[i-1]=nums[i-1]/tmp; ans++;}
              else break;
              }
+             if(nums[i-1]>nums[i]) return -1;
          }
         }
        }
