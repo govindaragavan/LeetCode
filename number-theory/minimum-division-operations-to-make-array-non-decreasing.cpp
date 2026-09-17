@@ -13,12 +13,9 @@ public:
              nums[i-1]=nums[i-1]/tmp; ans++;}
              else break;
              }
-             if(nums[i-1]>nums[i]) return -1;
          }
-        }
-       }
-       for(int i=1;i<n;i++){
         if(nums[i-1]>nums[i]) return -1;
+        }
        }
        return ans;
     }
