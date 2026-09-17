@@ -1,10 +1,13 @@
 class Solution {
 public:
     int sumOfPrimesInRange(int n) {
-     string s = to_string(n);
-     reverse(s.begin(),s.end());
-     int r=stoi(s);
-
+        int tmp=n;
+        int r=0;
+    while(tmp>0){
+        int rem=tmp%10;
+         r=r*10+rem;
+         tmp/=10;
+    } 
      int left=min(n,r);
      int right=max(n,r);
      int ans=0;
