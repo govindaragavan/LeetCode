@@ -12,13 +12,13 @@ public:
                 cout<<tmp<<" ";
              if(tmp!=0){
              nums[i-1]=nums[i-1]/tmp; ans++;}
-             else break;
+             else {if(nums[i-1]>nums[i]) return -1;}
              }
          }
         if(nums[i-1]>nums[i]) return -1;
         }
        }
-    //    for(int x : nums) cout<<x<<" ";
+    
        return ans;
     }
 
