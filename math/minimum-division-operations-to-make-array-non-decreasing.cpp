@@ -21,15 +21,14 @@ public:
     }
 
   int solve(int n){
-   vector<int> ans;
+   int ans=INT_MIN;
    for(int i=2;i<=sqrt(n);i++){
     if(n%i==0){
-       ans.push_back(i);
-        if(i!=n/i)   ans.push_back(n/i);
+        ans=max(ans,i);
+        if(i!=n/i)   ans=max(ans,i);
     }
    }
-//    cout<<ans.size()<<" ";
-   if(ans.size()==0) return 0;
-    return *max_element(ans.begin(),ans.end());
+   if(ans==INT_MIN) return 0;
+    return ans;
   }
 };
