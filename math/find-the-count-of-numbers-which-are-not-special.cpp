@@ -1,23 +1,23 @@
 class Solution {
 public:
     int nonSpecialCount(int l, int r) {
-        int ans=0;
-        for(int i=l;i<=r;i++){
-     if(solve(i)) ans++;
-        }
-        return r-l+1-ans;
+        int ans=r-l+1;
+        for(int i=l;i<=r;i++)
+     if(solve(i)) ans--;
+        
+        return ans;
     }
     bool solve(int n){
-        int size=0;
-        for(int i=2;i<=sqrt(n);i++){
-            if(n%i==0){
-                size++;
-                if(i!=n/i) size++;
-            }
-            if(size>1) return 0;
-            
-        }
-        if(size==1) return 1;
+        int root=(int)sqrt(n);
+        if(root*root==n && isPrime(root)) return 1;
         return 0;
+    }
+    bool isPrime(int n){
+        if(n<=1) return 0;
+        if(n==2) return 1;
+        if(n%2==0) return 0;
+        for(int i=3;i<=sqrt(n);i++)
+        if(n%i==0) return 0;
+        return 1;
     }
 };
