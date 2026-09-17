@@ -6,15 +6,19 @@ public:
         int ans=0;
        for(int i=n-1;i>=1;i--){
         if(nums[i-1]>nums[i]){
-         if(solve(nums[i-1])==0) return -1;
          if(solve(nums[i-1])!=0){
-            while(nums[i-1]>nums[i]){
-             nums[i-1]=nums[i-1]/solve(nums[i-1]); ans++;
+            while(nums[i-1]>nums[i] ){
+                int tmp =solve(nums[i-1]);
+             if(tmp!=0){
+             nums[i-1]=nums[i-1]/tmp; ans++;}
+             else break;
              }
          }
         }
        }
-       for(int x : nums) cout<<x<<" ";
+       for(int i=1;i<n;i++){
+        if(nums[i-1]>nums[i]) return -1;
+       }
        return ans;
     }
 
