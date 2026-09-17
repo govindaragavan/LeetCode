@@ -2,20 +2,20 @@ class Solution {
 public:
     int nonSpecialCount(int l, int r) {
         int ans=r-l+1;
-        for(int i=l;i<=r;i++)
+        for(long long i=l;i<=r;i++)
      if(solve(i)) ans--;
         
         return ans;
     }
-    bool solve(int n){
-        int root=(int)sqrt(n);
-        if(root*root==n && isPrime(root)) return 1;
+    bool solve(long long n){
+        long long root=(int)sqrt(n);
+        if(root*root==n) {
+            if(root==2) return 1;
+            else if(root%2!=0 && isPrime(root)) return 1;
+        }
         return 0;
     }
     bool isPrime(int n){
-        if(n<=1) return 0;
-        if(n==2) return 1;
-        if(n%2==0) return 0;
         for(int i=3;i<=sqrt(n);i++)
         if(n%i==0) return 0;
         return 1;
