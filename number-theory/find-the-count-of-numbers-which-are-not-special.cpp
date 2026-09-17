@@ -14,6 +14,8 @@ public:
                 size++;
                 if(i!=n/i) size++;
             }
+            if(size>1) return 0;
+            
         }
         if(size==1) return 1;
         return 0;
