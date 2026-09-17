@@ -1,17 +1,30 @@
 class Solution {
 public:
-    long long sumOfLargestPrimes(string s) {
-    unordered_set<int> set;
-    int n=s.length();
-    for(int i=0;i<n;i++){
-        for(int j=i;j<n;j++){
-            string tmp=s.substr(i,j);
-            if(tmp!=""){
-            int num=stoi(tmp);
-            set.insert(num);}
+    using ll = long long;
+    ll sumOfLargestPrimes(const string &s) {
+        vector <ll> primes;
+        for (ll i = 0; i < s.size(); i++) {
+            ll temp = 0;
+            for (ll j = i; j < s.size(); j++) {
+                temp = temp * 10 + (s[j] - '0');
+                if (isPrime(temp)) {
+                    primes.emplace_back(temp);
+                }
+            }
         }
-    }
-    for(auto it=set.begin();it!=set.end();it++) cout<<*it<<" ";
-    return 1;
+
+        sort(primes.begin(), primes.end());
+        primes.erase(unique(primes.begin(), primes.end()), primes.end());
+        ll m = primes.size();
+        if (m < 3) 
+            return accumulate(primes.begin(), primes.end(),0ll);
+        return primes[m - 1] + primes[m - 2] + primes[m - 3];
+}
+
+    bool isPrime(ll n) {
+        if (n < 2) return false; 
+        for (ll i = 2; i*i <= n; i++)
+            if (n % i == 0) return false;
+        return true;
     }
 };
