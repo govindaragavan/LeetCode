@@ -27,6 +27,7 @@ public:
    for(int i=2;i<=sqrt(n);i++){
     if(n%i==0){
         ans=n/i;
+        break;
     }
    }
     return ans;
