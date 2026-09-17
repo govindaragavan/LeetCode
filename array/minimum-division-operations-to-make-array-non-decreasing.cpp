@@ -26,8 +26,7 @@ public:
    int ans=0;
    for(int i=2;i<=sqrt(n);i++){
     if(n%i==0){
-        ans=max(ans,i);
-        if(i!=n/i)   ans=max(ans,n/i);
+        ans=n/i;
     }
    }
     return ans;
