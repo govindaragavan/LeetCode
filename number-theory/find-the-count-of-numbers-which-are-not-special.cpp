@@ -11,7 +11,8 @@ public:
         long long root=(int)sqrt(n);
         if(root*root==n) {
             if(root==2) return 1;
-            else if(root%2!=0 && isPrime(root)) return 1;
+            if(root==1) return 0;
+            if(root%2!=0 && isPrime(root)) return 1;
         }
         return 0;
     }
