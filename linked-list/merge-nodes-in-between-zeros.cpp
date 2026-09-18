@@ -16,7 +16,7 @@ public:
         ListNode* temp=head;
         int curr=0;
         while(temp){
-            if(temp->val==0){
+            if(temp->val==0 && curr!=0){
                 ListNode* dum=new ListNode(curr);
                 res->next=dum;
                 res=dum;
@@ -25,6 +25,6 @@ public:
             else curr+=temp->val;
             temp=temp->next;
         }
-        return dummy->next->next;
+        return dummy->next;
     }
 };
