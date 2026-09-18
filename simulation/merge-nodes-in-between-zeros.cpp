@@ -21,7 +21,10 @@ public:
             if(temp->val==0){
                 if(st.empty()) st.push(temp->val);
                 else{
-                 ans.push_back(curr);
+                //  st.pop();
+                ListNode* dum=new ListNode(curr);
+                res->next=dum;
+                res=dum;
                  curr=0;
                  }
             }
@@ -29,12 +32,12 @@ public:
             temp=temp->next;
         }
         if(curr>0) ans.push_back(curr);
-     for(int i=1;i<ans.size();i++) {
-        ListNode* Next=new ListNode(ans[i]);
-        res->val=ans[i-1];
-        res->next=Next;
-        res=res->next;
-     };
-        return dummy;
+    //  for(int i=1;i<ans.size();i++) {
+    //     ListNode* Next=new ListNode(ans[i]);
+    //     res->val=ans[i-1];
+    //     res->next=Next;
+    //     res=res->next;
+    //  };
+        return dummy->next;
     }
 };
