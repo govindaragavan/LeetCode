@@ -12,6 +12,7 @@ class Solution {
 public:
     ListNode* mergeNodes(ListNode* head) {
         stack<int> st;
+        st.push(0);
         vector<int> ans;
         ListNode* res=new ListNode(0);
         ListNode* dummy=res;
@@ -19,18 +20,15 @@ public:
         int curr=0;
         while(temp){
             if(temp->val==0){
-                if(st.empty()) st.push(temp->val);
-                else{
                 ListNode* dum=new ListNode(curr);
                 res->next=dum;
                 res=dum;
                  curr=0;
-                 }
             }
             else curr+=temp->val;
             temp=temp->next;
         }
         if(curr>0) ans.push_back(curr);
-        return dummy->next;
+        return dummy->next->next;
     }
 };
