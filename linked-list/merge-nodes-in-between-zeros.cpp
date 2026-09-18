@@ -11,9 +11,6 @@
 class Solution {
 public:
     ListNode* mergeNodes(ListNode* head) {
-        stack<int> st;
-        st.push(0);
-        vector<int> ans;
         ListNode* res=new ListNode(0);
         ListNode* dummy=res;
         ListNode* temp=head;
@@ -28,7 +25,6 @@ public:
             else curr+=temp->val;
             temp=temp->next;
         }
-        if(curr>0) ans.push_back(curr);
         return dummy->next->next;
     }
 };
