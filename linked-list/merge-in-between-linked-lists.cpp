@@ -21,14 +21,13 @@ public:
             c++;
         }
         temp=list1;
-        cout<<temp->val;
         while(temp){
         if(cnt==a-1){
             ListNode* tmp=list2;
             while(tmp){
             temp->next=tmp;
+            temp=tmp;
             tmp=tmp->next;
-            temp=temp->next;
             }
             temp->next=end;
              return list1;
