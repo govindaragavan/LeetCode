@@ -2,26 +2,19 @@ class Solution {
 public:
     vector<int> closestPrimes(int left, int right) {
         vector<int> v;
-        int prev=0;
-        int j=left;
-        for( j=left;j<=right;j++){
-            if(isPrime(j)) {
-                prev=j;
-                break;
+        for(int i=left;i<=right;i++){
+            if(isPrime(i)) v.push_back(i);
+        }
+        for(int x : v) cout<<x<<" ";
+        if(v.size()<2) return {-1,-1};
+        int diff=v[1]-v[0];
+        vector<int> ans={v[0],v[1]};
+        for(int i=2;i<v.size();i++){
+            if(v[i]-v[i-1]<diff){
+                diff=v[i]-v[i-1];
+                ans={v[i-1],v[i]};
             }
         }
-        vector<int> ans;
-        int diff=INT_MAX;
-        for(int i=j+1;i<=right;i++){
-            if(isPrime(i)) {
-              if(i-prev<diff){
-                diff=i-prev;
-                ans={prev,i};
-                prev=i;
-              }
-            }
-        }
-        if(prev==j) return {-1,-1};
         return ans;
     }
     private:
