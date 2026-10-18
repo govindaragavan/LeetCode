@@ -1,15 +1,26 @@
 class Solution {
 public:
     int coinChange(vector<int>& coins, int amount) {
-        vector<int> dp(amount+1,INT_MAX);
-        dp[0]=0;
-
-        for(int i=1;i<=amount;i++){
-           for(int x : coins)
-           if(i>=x && dp[i-x]!=INT_MAX)
-           dp[i]=min(dp[i],1+dp[i-x]);
+        int n=coins.size();
+        if(n==1){
+            if(amount%coins[0]==0) return amount/coins[0];
+            else return -1;
         }
-        if(dp[amount]==INT_MAX) return -1;
-  return dp[amount];
+        vector<vector<int>> dp(n,vector<int>(amount+1,INT_MAX));
+        //BASE CASE
+        for(int T=0;T<amount+1;T++) {
+          if(T%coins[0]==0)  dp[0][T]=T/coins[0];
+          else dp[0][T]=1e9;
+        }
+        // NESTED LOOP
+        for(int i=1;i<n;i++){
+            for(int T=0;T<amount+1;T++){
+                int notTake=dp[i-1][T];
+                int Take=INT_MAX;
+                if(coins[i]<=T) Take=1+dp[i][T-coins[i]];
+                dp[i][T]=min(Take,notTake);
+            }
+        }
+        return dp[n-1][amount]==1e9? -1 : dp[n-1][amount];
     }
 };
